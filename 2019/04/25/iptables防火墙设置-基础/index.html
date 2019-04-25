@@ -103,17 +103,23 @@
 
 
 
-  <meta name="description" content="for u in my love">
+  <meta name="description" content="早就听闻iptables很难了,也一直没有学.但是呢,这么基础和重要的东西不掌握点总觉得缺点什么.是的,关闭端口/拒绝访问都不会,要我何用?   archlinux安装系统的时候默认就已经安装好了iptables,只是没有开启而已,不信我们看一下就知道了  arch wiki上说开启这个服务首先需要有 /etc/iptables/iptables.rules这个文件,默认是没有的(但是我的系统上有">
+<meta name="keywords" content="系统,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iptables防火墙设置-基础">
 <meta property="og:url" content="http://dovezmei.club/2019/04/25/iptables防火墙设置-基础/index.html">
 <meta property="og:site_name" content="NARCISSUS">
-<meta property="og:description" content="for u in my love">
+<meta property="og:description" content="早就听闻iptables很难了,也一直没有学.但是呢,这么基础和重要的东西不掌握点总觉得缺点什么.是的,关闭端口/拒绝访问都不会,要我何用?   archlinux安装系统的时候默认就已经安装好了iptables,只是没有开启而已,不信我们看一下就知道了  arch wiki上说开启这个服务首先需要有 /etc/iptables/iptables.rules这个文件,默认是没有的(但是我的系统上有">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T05:19:38.328Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-5070d3b50fc5f7b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-5f6365a231ef9201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-bb0853902b5dd208.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-45aedf3d0f18c16e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-25T05:24:21.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iptables防火墙设置-基础">
-<meta name="twitter:description" content="for u in my love">
+<meta name="twitter:description" content="早就听闻iptables很难了,也一直没有学.但是呢,这么基础和重要的东西不掌握点总觉得缺点什么.是的,关闭端口/拒绝访问都不会,要我何用?   archlinux安装系统的时候默认就已经安装好了iptables,只是没有开启而已,不信我们看一下就知道了  arch wiki上说开启这个服务首先需要有 /etc/iptables/iptables.rules这个文件,默认是没有的(但是我的系统上有">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9937522-5070d3b50fc5f7b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -411,12 +417,41 @@
                 
               
 
-              <time title="创建时间：2019-04-25 13:19:38" itemprop="dateCreated datePublished" datetime="2019-04-25T13:19:38+08:00">2019-04-25</time>
+              <time title="创建时间：2019-04-25 13:19:38 / 修改时间：13:24:21" itemprop="dateCreated datePublished" datetime="2019-04-25T13:19:38+08:00">2019-04-25</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/archlinux/" itemprop="url" rel="index"><span itemprop="name">archlinux</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -446,7 +481,42 @@
       
 
       
-        
+        <p>早就听闻iptables很难了,也一直没有学.但是呢,这么基础和重要的东西不掌握点总觉得缺点什么.是的,关闭端口/拒绝访问都不会,要我何用?</p>
+<hr>
+<ul>
+<li><p>archlinux安装系统的时候默认就已经安装好了iptables,只是没有开启而已,不信我们看一下就知道了<br><img src="https://upload-images.jianshu.io/upload_images/9937522-5070d3b50fc5f7b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+<li><p>arch wiki上说开启这个服务首先需要有 <code>/etc/iptables/iptables.rules</code>这个文件,默认是没有的(但是我的系统上有是什么鬼?),没有就自己新建一个</p>
+<pre><code>sudo touch /etc/iptables/iptables.rules
+</code></pre><p>或者复制一个</p>
+<pre><code>sudo cp /etc/iptables/empty.rules /etc/iptables/iptables.rules
+</code></pre></li>
+<li><p>然后就可以启动了</p>
+<pre><code>sudo systemctl start iptables
+</code></pre><p>如果想要开机自动启动的话,就这样设置</p>
+<pre><code>sudo systemctl enable iptables
+</code></pre></li>
+<li><p>如果是使用的ipv6那么就这样设置(多个6而已)</p>
+<pre><code>sudo systemctl start ip6tables
+sudo systemctl enable ip6tables
+</code></pre><p>等等,我启动时竟然出错了?<br><img src="https://upload-images.jianshu.io/upload_images/9937522-5f6365a231ef9201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="但是我启动服务时出错了我"><br>  终于找到原因了,那个iptables.rules文件中说了要清空内容,但是默认是没有清空的,删掉之后再启动就OK了(所以创建这个文件时还是用touch吧,不要copy的好)<br><img src="https://upload-images.jianshu.io/upload_images/9937522-bb0853902b5dd208.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+<li><p>可能现在写规则还是会出现一些错误提示,重启一下就ok</p>
+</li>
+<li><p>现在来写第一条规则,了解一下怎么保存规则的<br>我想阻止别人ping 我的ip地址</p>
+<pre><code>iptables -A INPUT -p icmp -j DROP
+</code></pre><p>查看写的这条规则:</p>
+<pre><code>sudo iptables -nvL
+</code></pre><p>现在写的这个可以临时生效,只要重启后就失效了,所以要保存这条规则,需将规则保存在<code>/etc/iptables/iptables-rules</code>中<br>这条命令需要root权限,但是sudo来执行的话,好像有点问题.所以切换root用户操作</p>
+<pre><code>su
+iptables-save &gt; /etc/iptables/iptables-rules
+</code></pre><p>搞定<br>至此 ,在别的电脑上ping我的ip就ping不通了</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9937522-45aedf3d0f18c16e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+</ul>
+<hr>
+<p>  开心</p>
+
       
     </div>
 
@@ -467,6 +537,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/系统/" rel="tag"># 系统</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
 
       
       
@@ -485,6 +563,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/iptables防火墙设置-规则/" rel="prev" title="iptables防火墙设置-规则">
+                iptables防火墙设置-规则 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -544,7 +626,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -567,7 +649,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -594,7 +684,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
