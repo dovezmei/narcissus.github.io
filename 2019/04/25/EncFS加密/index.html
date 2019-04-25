@@ -103,17 +103,18 @@
 
 
 
-  <meta name="description" content="for u in my love">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://dovezmei.club/categories/index.html">
+  <meta name="description" content="linux下面加密文件的方法还是比较多的，常见的vim，zip，tar等都可以加密。不过这里要说的是加密文件夹的一个软件：encfs  所有的路径都是绝对路径,假设文件都在家目录   假设要加密的是data这个文件夹，先创建一个存加密文件的.data文件夹。 mkdir ～/.data  加密data文件夹 encfs ~/.data ~/data  取消被加密的文件的挂载 fuser -u ~/">
+<meta name="keywords" content="系统,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EncFS加密">
+<meta property="og:url" content="http://dovezmei.club/2019/04/25/EncFS加密/index.html">
 <meta property="og:site_name" content="NARCISSUS">
-<meta property="og:description" content="for u in my love">
+<meta property="og:description" content="linux下面加密文件的方法还是比较多的，常见的vim，zip，tar等都可以加密。不过这里要说的是加密文件夹的一个软件：encfs  所有的路径都是绝对路径,假设文件都在家目录   假设要加密的是data这个文件夹，先创建一个存加密文件的.data文件夹。 mkdir ～/.data  加密data文件夹 encfs ~/.data ~/data  取消被加密的文件的挂载 fuser -u ~/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T04:00:27.408Z">
+<meta property="og:updated_time" content="2019-04-25T05:06:35.090Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="for u in my love">
+<meta name="twitter:title" content="EncFS加密">
+<meta name="twitter:description" content="linux下面加密文件的方法还是比较多的，常见的vim，zip，tar等都可以加密。不过这里要说的是加密文件夹的一个软件：encfs  所有的路径都是绝对路径,假设文件都在家目录   假设要加密的是data这个文件夹，先创建一个存加密文件的.data文件夹。 mkdir ～/.data  加密data文件夹 encfs ~/.data ~/data  取消被加密的文件的挂载 fuser -u ~/">
 
 
 
@@ -121,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://dovezmei.club/categories/">
+  <link rel="canonical" href="http://dovezmei.club/2019/04/25/EncFS加密/">
 
 
 
@@ -131,7 +132,7 @@
   };
 </script>
 
-  <title>categories | NARCISSUS</title>
+  <title>EncFS加密 | NARCISSUS</title>
   
 
 
@@ -255,7 +256,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -328,31 +329,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -379,66 +355,212 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dovezmei.club/2019/04/25/EncFS加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Narcissus">
+      <meta itemprop="description" content="for u in my love">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NARCISSUS">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">categories
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
+          <h1 class="post-title" itemprop="name headline">EncFS加密
+
               
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-              目前共计 3 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/archlinux/">archlinux</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/实用技术/">实用技术</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 13:05:35 / 修改时间：13:06:35" itemprop="dateCreated datePublished" datetime="2019-04-25T13:05:35+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/archlinux/" itemprop="url" rel="index"><span itemprop="name">archlinux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>linux下面加密文件的方法还是比较多的，常见的vim，zip，tar等都可以加密。不过这里要说的是加密文件夹的一个软件：<a href="https://wiki.archlinux.org/index.php/EncFS#Installation" target="_blank" rel="noopener">encfs</a></p>
+<blockquote>
+<p>所有的路径都是绝对路径,假设文件都在家目录</p>
+</blockquote>
+<ul>
+<li><p>假设要加密的是data这个文件夹，先创建一个存加密文件的.data文件夹。</p>
+<pre><code>mkdir ～/.data
+</code></pre></li>
+<li><p>加密data文件夹</p>
+<pre><code>encfs ~/.data ~/data
+</code></pre></li>
+<li><p>取消被加密的文件的挂载</p>
+<pre><code>fuser -u ~/data
+</code></pre></li>
+<li><p>重新挂载文件</p>
+<pre><code>encfs ~/.data ~/data
+</code></pre></li>
+</ul>
+<hr>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/系统/" rel="tag"># 系统</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/Archlinux手动安装mysql-5-6-42/" rel="next" title="Archlinux手动安装mysql-5.6.42">
+                <i class="fa fa-chevron-left"></i> Archlinux手动安装mysql-5.6.42
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/firefox无法输入中文/" rel="prev" title="firefox无法输入中文">
+                firefox无法输入中文 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Archlinux的安装还是不算简单，所以需要记录一下安装步骤。 1.默认tty字体太小，输命令前当然是将终端的字体调大一些 setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz    2.由于安装是在线下载的，所以需要有网络连接，最好是有线连接了，无线连接有点麻烦 rfkill unblock all wifi-menu  #搜索网络">
+<meta name="keywords" content="系统,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Archlinux安装">
+<meta property="og:url" content="http://dovezmei.club/2019/04/25/Archlinux安装/index.html">
+<meta property="og:site_name" content="NARCISSUS">
+<meta property="og:description" content="Archlinux的安装还是不算简单，所以需要记录一下安装步骤。 1.默认tty字体太小，输命令前当然是将终端的字体调大一些 setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz    2.由于安装是在线下载的，所以需要有网络连接，最好是有线连接了，无线连接有点麻烦 rfkill unblock all wifi-menu  #搜索网络">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9937522-5a9d2737f415dc14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-a705378143c1213e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-b1efc6ac7019029c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-2bcb8e5afb327ec0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-1d48140f5cdb7204.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-25T04:57:49.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Archlinux安装">
+<meta name="twitter:description" content="Archlinux的安装还是不算简单，所以需要记录一下安装步骤。 1.默认tty字体太小，输命令前当然是将终端的字体调大一些 setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz    2.由于安装是在线下载的，所以需要有网络连接，最好是有线连接了，无线连接有点麻烦 rfkill unblock all wifi-menu  #搜索网络">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9937522-5a9d2737f415dc14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://dovezmei.club/2019/04/25/Archlinux安装/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Archlinux安装 | NARCISSUS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NARCISSUS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">narcissus blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dovezmei.club/2019/04/25/Archlinux安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Narcissus">
+      <meta itemprop="description" content="for u in my love">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NARCISSUS">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Archlinux安装
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 12:41:50 / 修改时间：12:57:49" itemprop="dateCreated datePublished" datetime="2019-04-25T12:41:50+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/archlinux/" itemprop="url" rel="index"><span itemprop="name">archlinux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/9937522-5a9d2737f415dc14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="Archlinux的安装还是不算简单，所以需要记录一下安装步骤。"><a href="#Archlinux的安装还是不算简单，所以需要记录一下安装步骤。" class="headerlink" title="Archlinux的安装还是不算简单，所以需要记录一下安装步骤。"></a>Archlinux的安装还是不算简单，所以需要记录一下安装步骤。</h3><ul>
+<li><p>1.默认tty字体太小，输命令前当然是将终端的字体调大一些</p>
+<pre><code>setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz
+</code></pre></li>
+</ul>
+<ul>
+<li><p>2.由于安装是在线下载的，所以需要有网络连接，最好是有线连接了，无线连接有点麻烦</p>
+<pre><code>rfkill unblock all
+wifi-menu  #搜索网络
+ping -c 3 archlinux.org  #查看是否连接上
+</code></pre><ul>
+<li><p>如果连接不上那就比较麻烦了，试着重启下<code>dhcpcd</code>服务</p>
+<p>systemctl stop dhcpcd &amp;&amp; systemctl start dhcpcd</p>
+<ul>
+<li>一些手动连接的方法，以后再补充</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3.磁盘分区，分区方法比较多，我选择用cfdisk</p>
+<ul>
+<li><p>需要分出一块100MB的esp分区来安装grub（esp分区采用fat文件类型），一块root分区来安装系统（linux系统采用ext4这种文件类型）</p>
+<ul>
+<li><p>lsblk  #查看分区名<br><img src="https://upload-images.jianshu.io/upload_images/9937522-a705378143c1213e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<pre><code>cfdisk  /dev/sdxy #x代表a/b/c,y代表数字
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>4.格式化分区</p>
+<pre><code>mkfs.vat /dev/sdxy  #x代表a/b/c,y代表数字，这里格式化esp分区为fat格式
+mkfs..ext4 /dev/sdxy  #x代表a/b/c,y代表数字，这里格式化root为ext4格式
+</code></pre></li>
+<li><p>5.磁盘分好了之后就可以安装系统了，先将分区挂载上来</p>
+<pre><code>mount /dev/sdxy /mnt  #这里先挂载root分区到/mnt下
+mkdir -p /mnt/boot/efi  #然后建文件夹来挂载esp分区
+mount /dev/sdxy /mnt/boot/efi #将esp分区挂载到新建的文件下
+</code></pre></li>
+<li><p>6.安装之前要选择国内的源，这样下载的速度才快，不然会等到花都谢了</p>
+<pre><code>vim /etc/pacman.d/mirrorlis
+</code></pre><ul>
+<li>将这里面的china源移动到文件开头就像下面一样<br><img src="https://upload-images.jianshu.io/upload_images/9937522-b1efc6ac7019029c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>7.安装基础包到挂载的root分区里，都是系统启动必须的</p>
+<pre><code>pacstrap /mnt base base-devel #(base-devel is optional)
+</code></pre><ul>
+<li><p>如果你制作的启动盘是比较早的版本，那么这里可能会出现安装不了的问题，需要安装archlinux-keyring来解决这个问题。没有问题则跳过</p>
+<p>pacman -Sy archlinux-keyring &amp;&amp; pacman -Su</p>
+</li>
+</ul>
+</li>
+<li><p>8.接下来就是将磁盘挂载的信息写到fstab这个文件夹里</p>
+<pre><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre></li>
+</ul>
+<ul>
+<li><p>9.现在需要对系统进行设置，所以改变root目录到新系统里</p>
+<pre><code>arch-chroot /mnt
+</code></pre></li>
+</ul>
+<ul>
+<li><p>10.设置时区</p>
+<pre><code>ln -sf /usr/share/zoneinfo/*Region*/*City* /etc/localtime
+</code></pre></li>
+</ul>
+<ul>
+<li><p>11.设置语言环境Locale</p>
+<pre><code>vim /etc/locale.gen 
+</code></pre><p>由于要使用中文的输入法或者中文系统语言的，所以 <code>zh_CN.UTF-8 UTF-8</code> 和<code>en_US.UTF-8 UTF-8</code>是要选择的</p>
+<pre><code>locale-gen  #生成配置
+</code></pre></li>
+</ul>
+<ul>
+<li><p>12.设置系统名和用户名</p>
+<ul>
+<li><p>设置系统名</p>
+<p>touch /etc/hostname<br>vim /etc/hostname</p>
+</li>
+<li><p>用户设置</p>
+<p>vim /etc/hosts</p>
+<p>进行如下设置</p>
+<p>127.0.0.1 localhost.localdomain localhost<br>::1       localhost.localdomain localhost<br>127.0.1.1 myhostname.localdomain myhostname</p>
+</li>
+</ul>
+</li>
+<li><p>13.下载网络连接所需要的软件</p>
+<ul>
+<li><p>无线网要安装这些才方便使用</p>
+<p>pacman -S iw wpa_supplicant dialog netctl</p>
+</li>
+<li><p>当然了安装一个网络管理软件可以少许多不必要的配置</p>
+<p>pacman -S NetworkManager</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>14.设置root用户的密码（输入密码时是没有显示的，这是一种安全保护措施）</p>
+<pre><code>passwd
+</code></pre></li>
+</ul>
+<ul>
+<li><p>15.1安装grub启动管理器</p>
+<p>os-prober是为了检测windows（双系统）而安装的，不安装也可以手动配置。安装重启后第一次启动是检测不到的，需要再配置一次grub</p>
+<pre><code>pacman -S grub efibootmgr os-prober 
+grub-mkconfig -o /boot/grub/grub.cfg
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+</code></pre></li>
+<li><p>15.2以前一直安装的是grub，觉得安装也挺简单，但是最近却出了一些问题，安装的时候会提示grub无法安装到efi分区，空间不足。由于找不到解决的办法，所以选择了另外一种启动器：<a href="https://wiki.archlinux.org/index.php/REFInd#Installation" target="_blank" rel="noopener">refind</a></p>
+<pre><code>pacman -S refind
+</code></pre><p>安装的时候有点小复杂</p>
+<pre><code>refind-install   #由于使用的是liveiso安装的，所以还需要手动调整
+mkdir /boot/efi/EFI/BOOT  #新建一个文件夹
+cp /boot/efi/EFI/refind/refind_x64.efi  /boot/efi/EFI/BOOT/bootx64.efi  #将refind加入启动项
+cp /usr/share/refind/refind_linux.conf-sample /boot/refind_linux.conf
+</code></pre><p>然后修改一下refind_linux.conf.(我还修改了fstab和refind.conf，因为我用lsblk -f的时候找不到uuid，奇怪得很：）)</p>
+<pre><code>vim /boot/refind_linux.conf
+</code></pre><p>   <img src="https://upload-images.jianshu.io/upload_images/9937522-2bcb8e5afb327ec0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+</ul>
+<ul>
+<li><p>16.好了，基本系统已经安装完成。取消挂载的磁盘分区，然后重启</p>
+<pre><code>exit
+umount -R /mnt
+reboot
+</code></pre></li>
+</ul>
+<hr>
+<hr>
+<p>##重启之后就是安装其它需要的软件了</p>
+<ul>
+<li><p>1.为了检测到windows，再运行一次这条命令</p>
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre></li>
+</ul>
+<ul>
+<li><p>2.允许联网，启用网络模块</p>
+<pre><code>rfkill unblock all &amp;&amp; dhcpcd
+systemctl enable dhcpcd
+</code></pre></li>
+<li><p>3.简单的网络连接命令</p>
+<pre><code>wifi-menu
+</code></pre></li>
+<li><p>4.添加用户，并加入sudoer（可以执行sudo命令）</p>
+<pre><code>useradd -m -G wheel -s /bin/bash dove
+passwd dove
+</code></pre><p>  用户加入sudoer</p>
+<pre><code>visudo
+</code></pre></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9937522-1d48140f5cdb7204.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<ul>
+<li><p>5.安装显示服务，可以选择xorg或者wayland。现在wayland支持度已经不错了，比如gnome和kde就是默认使用wayland的。</p>
+<ul>
+<li><p>可以安装xorg</p>
+<pre><code>pacman -S xorg
+</code></pre></li>
+<li><p>或者安装wayland配合gnome用</p>
+<pre><code>pacman -S wayland
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>6.<a href="https://wiki.archlinux.org/index.php/Xorg#Driver_installation" target="_blank" rel="noopener">安装显卡驱动</a></p>
+<ul>
+<li><p>inter显卡驱动</p>
+<pre><code>pacman -S xf86-video-intel (intel driver)
+</code></pre></li>
+<li><p>nvida显卡驱动</p>
+<pre><code>pacman -S xf86-video-nouveau (nvidia driver)
+</code></pre><p>或者</p>
+<pre><code>pacman -S xf86-video-vesa (common deriver)
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>7.安装声卡驱动 (include alsamixer and amixer(a shell command tool))</p>
+<pre><code>pacman -S alsa-utils
+</code></pre></li>
+</ul>
+<blockquote>
+<p>这里就有很多选择了，可以只安装窗口管理器（节约系统资源），也可以安装桌面环境（集成度高，开箱即用的这种）。可以体验一下无限种可能的感觉</p>
+</blockquote>
+<blockquote>
+<p>1 窗口管理器</p>
+<ul>
+<li>1.1安装平铺窗口管理器，这个安装配置好了之后很好用的。当然了，配置过程相当费时间(我喜欢的组合是 xmonad and xmobar plus dmenu)</li>
+</ul>
+</blockquote>
+<pre><code>pacman -S xmonad
+pacman -S xmobar
+pacman -S dmenu
+</code></pre><ul>
+<li><p>1.2.为了能够使用startx来进入窗口管理器需要安装基础的软件</p>
+<pre><code>pacman -S xorg-xinit # (get the command startx)
+pacman -S xterm      #(when we type startx then this is important for that .xinitrc
+</code></pre><p>  use xterm by default.and it can be changed by urxvt )<br><code># pacman -S rxvt-unioncode</code>  (i prefer this one for it can show chinese)</p>
+</li>
+<li><p>1.3.然后还要在文件里配置一下，才可以使用startx进入窗口管理器xmond</p>
+<pre><code>cp /etc/X11/xinit/xinitrc ~/.xinitrc
+</code></pre><p>然后添加</p>
+<pre><code>exec xmonad to .xinitrc
+</code></pre><p>现在就可以进入xmond的世界了，不过没有配置的xmond是你不敢想象的</p>
+<pre><code>startx
+</code></pre></li>
+</ul>
+<p>   如果想开机直接进入xmond，而不用每次都敲startx，那么修改一下~/.bash_profile</p>
+<pre><code>vim .bash_profile
+</code></pre><p>  添加</p>
+<pre><code>if [ -z &quot;$DISPLAY&quot; ] &amp;&amp; [ -n &quot;$XDG_VTNR&quot; ] &amp;&amp; [ &quot;$XDG_VTNR&quot; -eq 1 ]; then  exec startxfi
+</code></pre><ul>
+<li><p>好了，一个完整系统已经安装好了。进入xmond后的一些小的配置</p>
+<ul>
+<li><ol>
+<li><p>make super key instead of capslock<br><code>#xmodmap -pke</code>  //show key map and find capslock is 66 super_l is 133 super_r is 134<br><code>#touch .xmodmap</code> //used to set settings<br>then add this command like this:</p>
+<pre><code>!delete fake super key
+keycode 133 =
+keycode 134 =
+!change Caps_Lock to Super_L
+keycode 66 = Super_L
+!clear lock
+clear lock
+!clear all mod_s with Super key
+clear mod4
+! add our new Super key
+add mod4 = Super_L
+</code></pre><p>then run command to make it work<br><code>#xmodmap ./.xmodmap</code><br>after that we can add this command (xmodmap ~/.xmodmap &amp;) to ~/.xinitrc ,then it will work every       time we log into x window</p>
+</li>
+</ol>
+</li>
+<li>2.in order to use xbacklight to adjust backlight we should install xf86-video-intel<br><code>#pacman -S xf86-video-intel</code><br>and then run command like this to adjust screen light<br><code>#xbacklight -set 40</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>2 接下来是安装另一种：桌面环境<br>    这里可能安装软件的时候会失败，原因是签名不对，所以先安装签名<br><code>pacman -S archlinux-keyring</code></p>
+</blockquote>
+<ul>
+<li><p>2.1安装gnome桌面环境</p>
+<pre><code>pacman -S gnome
+</code></pre></li>
+<li><p>2.2安装额外的一些包，包含了许多有用的软件</p>
+<pre><code>pacman -S gnome-extra
+</code></pre></li>
+<li><p>2.3安装logoin管理器</p>
+<pre><code>pacman -S gdm
+systemctl enable gdm  #开启gdm服务，开机自启
+</code></pre></li>
+<li><p>2.4安装<a href="https://www.archlinux.org/packages/?name=xorg-server-xwayland" target="_blank" rel="noopener">xorg-server-xwayland</a>来启动某些不支持wayland的应用</p>
+<pre><code>pacman -S xorg-server-xwayland
+</code></pre></li>
+<li><p>2.5安装gnome的个性化设置软件</p>
+<pre><code>pacman -S gnome-tweak
+</code></pre></li>
+</ul>
+<ul>
+<li><p>（可选）2.6启动wayland服务，在<code>.bash_profile</code>中添加</p>
+<pre><code> if [[ -z $DISPLAY ]] &amp;&amp; [[ $(tty) = /dev/tty1 ]] &amp;&amp; [[ -z $XDG_SESSION_TYPE ]]; then
+XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
+fi
+</code></pre></li>
+</ul>
+<hr>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/系统/" rel="tag"># 系统</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/基于github和hexo的个人博客搭建步骤/" rel="next" title="基于github和hexo的个人博客搭建步骤">
+                <i class="fa fa-chevron-left"></i> 基于github和hexo的个人博客搭建步骤
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/Archlinux安装之后的配置/" rel="prev" title="Archlinux安装之后的配置">
+                Archlinux安装之后的配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Narcissus</p>
+              <div class="site-description motion-element" itemprop="description">for u in my love</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Archlinux的安装还是不算简单，所以需要记录一下安装步骤。"><span class="nav-number">1.</span> <span class="nav-text">Archlinux的安装还是不算简单，所以需要记录一下安装步骤。</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Narcissus</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="安装软件   1.pacman的使用（以前介绍的不全，现在补上）  pacman -Syu  升级系统pacman -Ss   搜索软件pacman -Si 查看软件详细信息pacman -S   安装软件pacman -Rs  删除软件pacman -Qs 查询已安装软件pacman -Qi 查询已安装软件详细信息这两个查询命令有啥作用呢？可以把已安装的软件导出到一个文件里面去，下次安装系统">
+<meta name="keywords" content="系统,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Archlinux安装之后的配置">
+<meta property="og:url" content="http://dovezmei.club/2019/04/25/Archlinux安装之后的配置/index.html">
+<meta property="og:site_name" content="NARCISSUS">
+<meta property="og:description" content="安装软件   1.pacman的使用（以前介绍的不全，现在补上）  pacman -Syu  升级系统pacman -Ss   搜索软件pacman -Si 查看软件详细信息pacman -S   安装软件pacman -Rs  删除软件pacman -Qs 查询已安装软件pacman -Qi 查询已安装软件详细信息这两个查询命令有啥作用呢？可以把已安装的软件导出到一个文件里面去，下次安装系统">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9937522-a97d887ad9e881fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-43067dea0f28d6f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-25T04:56:31.752Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Archlinux安装之后的配置">
+<meta name="twitter:description" content="安装软件   1.pacman的使用（以前介绍的不全，现在补上）  pacman -Syu  升级系统pacman -Ss   搜索软件pacman -Si 查看软件详细信息pacman -S   安装软件pacman -Rs  删除软件pacman -Qs 查询已安装软件pacman -Qi 查询已安装软件详细信息这两个查询命令有啥作用呢？可以把已安装的软件导出到一个文件里面去，下次安装系统">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9937522-a97d887ad9e881fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://dovezmei.club/2019/04/25/Archlinux安装之后的配置/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Archlinux安装之后的配置 | NARCISSUS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NARCISSUS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">narcissus blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dovezmei.club/2019/04/25/Archlinux安装之后的配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Narcissus">
+      <meta itemprop="description" content="for u in my love">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NARCISSUS">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Archlinux安装之后的配置
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 12:55:03 / 修改时间：12:56:31" itemprop="dateCreated datePublished" datetime="2019-04-25T12:55:03+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/archlinux/" itemprop="url" rel="index"><span itemprop="name">archlinux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/9937522-a97d887ad9e881fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<blockquote>
+<p>安装软件</p>
+</blockquote>
+<ul>
+<li><p>1.pacman的使用（以前介绍的不全，现在补上）</p>
+<blockquote>
+<p>pacman -Syu  升级系统<br>pacman -Ss   搜索软件<br>pacman -Si 查看软件详细信息<br>pacman -S   安装软件<br>pacman -Rs  删除软件<br>pacman -Qs 查询已安装软件<br>pacman -Qi 查询已安装软件详细信息<br>这两个查询命令有啥作用呢？可以把已安装的软件导出到一个文件里面去，下次安装系统就知道要安装那么东西了。</p>
+</blockquote>
+<ul>
+<li>a 如果想指定某些软件不更新，该怎么做？<br>例如我不想更新mate-desktop这个软件，那么就修改 <strong>/etc/pacman.conf</strong> 这个文件，ignorepkg后面写上不需要更新的软件名就好了</li>
+<li>b 是不是每次搜索软件的时候终端搜索出来的结果都很难看（都是一个颜色），去掉color的注释就好了</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9937522-43067dea0f28d6f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<ul>
+<li><p>一些必备应用：</p>
+<ul>
+<li>字体：ttf-dejavu  ttf-inconsolata ；</li>
+<li>资源查看：htop；</li>
+<li>终端图片查看：feh (used for x window , set desktop background)；</li>
+<li>编辑器： vim ；</li>
+<li>终端文件管理器：ranger </li>
+<li>终端视频播放器：mplayer</li>
+</ul>
+</li>
+<li><p>2.配置aur来启用更多的软件库 :  找到<a href="https://github.com/archlinuxcn/mirrorlist-repo" target="_blank" rel="noopener">aur源</a>，选择一种</p>
+<pre><code>比如添加163源
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/pacman.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## 网易 (ipv4, http, https)</span><br><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.163.com/archlinux-cn/$arch</span><br></pre></td></tr></table></figure>
+<p>  然后需要安装archlinuxcn签名</p>
+<pre><code>pacman -S archlinuxcn-keyring
+</code></pre><p> 然后安装一个<a href="https://wiki.archlinux.org/index.php/AUR_helpers#Search_and_download" target="_blank" rel="noopener">aur的包管理器</a><br>比如安装：yay<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S git</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://aur.archlinux.org/yay.git</span><br><span class="line">cd yay</span><br><span class="line">makepkg -si</span><br></pre></td></tr></table></figure>
+<p>然后就可以使用yay来安装软件了</p>
+<ul>
+<li><p>3.firefox</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S firefox</span><br><span class="line">pacman -S wqy-microhei  #firefox显示中文</span><br><span class="line">pacman -S flashplugin  #firefox播放视频</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.安装搜狗输入法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S fcitx</span><br><span class="line">pacman -S fcitx-configtool</span><br><span class="line">pacman -S fcitx-im</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S fcitx-sogoupinyin</span><br></pre></td></tr></table></figure>
+<p>如果使用的是wayland，那么在<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">GTK_IM_MODULE=fcitx</span><br><span class="line">QT_IM_MODULE=fcitx</span><br><span class="line">XMODIFIERS=@im=fcitx</span><br></pre></td></tr></table></figure></p>
+<p>如果使用xorg，则添加到<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 5.安装网易云音乐</span><br></pre></td></tr></table></figure></p>
+<p>yay -S netease-cloud-music<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 6.安装urxvt，以及配置xterm</span><br></pre></td></tr></table></figure></p>
+<p>pacman -S rxvt-unicode<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配置：新建.Xresources</span><br></pre></td></tr></table></figure></p>
+<p>touch .Xresources<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">URxvt.font: xft:Inconsolata:style=bole:pixelsize=22</span><br><span class="line">URxvt.letterSpace: +1</span><br><span class="line">URxvt.scrollBar_right: True</span><br><span class="line">URxvt.cursorBlink:True</span><br><span class="line">URxvt.cursorColor:#DCB36A</span><br><span class="line">URxvt.cursorUnderline:False</span><br><span class="line">URxvt.pointerBlankDelay:1</span><br><span class="line">URxvt.saveLines:1000</span><br><span class="line"></span><br><span class="line">URxvt.background:#002B35</span><br><span class="line">URxvt.foreground:#839496</span><br><span class="line"></span><br><span class="line">URxvt.scrollBar:false</span><br><span class="line">URxvt.inheritPixmap: true</span><br><span class="line">URxvt.tintCddolor:white </span><br><span class="line">URxvt.shading:40 </span><br><span class="line"></span><br><span class="line">URxvt.colorBD:#78E3BF</span><br><span class="line">URxvt.colorUL:#D7D2BC</span><br><span class="line">! Colors</span><br><span class="line">URxvt*color0:  #000000</span><br><span class="line">URxvt*color8:  #686868</span><br><span class="line">URxvt*color1:  #B21818</span><br><span class="line">URxvt*color9:  #FF5454</span><br><span class="line">URxvt*color2:  #18B218</span><br><span class="line">URxvt*color10: #7EDD7E</span><br><span class="line">URxvt*color3:  #B26818</span><br><span class="line">URxvt*color11: #FFFF54</span><br><span class="line">URxvt*color4:  #14477b</span><br><span class="line">URxvt*color12: #2578cb</span><br><span class="line">URxvt*color5:  #B218B2</span><br><span class="line">URxvt*color13: #FF54FF</span><br><span class="line">URxvt*color6:  #18B2B2</span><br><span class="line">URxvt*color14: #6ADCDC</span><br><span class="line">URxvt*color7:  #B2B2B2</span><br><span class="line">URxvt*color15: #FFFFFF</span><br><span class="line"></span><br><span class="line">URxvt*iso14755:false</span><br><span class="line">URxvt*iso14755_52:false</span><br><span class="line"></span><br><span class="line">URxvt.urlLauncher:firefox</span><br><span class="line">URxvt.urgentOnBell:True</span><br><span class="line">URxvt.fade:50</span><br><span class="line">URxvt.fadecolor:gray</span><br><span class="line">URxvt.highlightColor:#BDBC6A</span><br><span class="line">URxvt.highlightTextColor:black</span><br></pre></td></tr></table></figure></p>
+<p> 配置xterm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim  .Xresources</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">!XTerm.vt100.faceName:Libration Mono:size=14:antialias=false</span><br><span class="line">XTerm.vt100.faceName:Inconsolata Mono:size=14:antialias=false</span><br><span class="line"></span><br><span class="line">XTerm.vt100.foreground: black</span><br><span class="line">XTerm.vt100.background: #DEDEDE</span><br><span class="line">XTerm.vt100.color0: rgb:28/28/28</span><br><span class="line">XTerm.vt100.color15: rgb:e4/e4/e4</span><br></pre></td></tr></table></figure>
+<p>让配置生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xrdb .Xresources</span><br></pre></td></tr></table></figure></p>
+<p>如果使用的是xorg，就需要将这句加入<code>.xinitrc</code> (<code>cp /etc/X11/xinit/xinitrc ~/.xinitrc</code>)<br>如果使用wayland，加入<code>.bash_profile</code></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/系统/" rel="tag"># 系统</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/Archlinux安装/" rel="next" title="Archlinux安装">
+                <i class="fa fa-chevron-left"></i> Archlinux安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/Archlinux安装marktext-创建快捷方式/" rel="prev" title="Archlinux安装marktext(创建快捷方式)">
+                Archlinux安装marktext(创建快捷方式) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Narcissus</p>
+              <div class="site-description motion-element" itemprop="description">for u in my love</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Narcissus</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
