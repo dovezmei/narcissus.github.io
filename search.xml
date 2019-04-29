@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[shell编程一]]></title>
+    <url>%2F2019%2F04%2F29%2Fshell%E7%BC%96%E7%A8%8B%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[shell编程一创建shell文件1touch test.sh #.sh用来表示这是一个shell脚本，并无特殊作用 shell文件的执行12chmod +x test.sh #给文件添加可执行权限./test.sh #表示执行当前目录下的shell脚本 指定执行shell及注释文件开头写法： 123#!/bin/bash #指明使用何种shell#这里指明shell作用、目的#指明作者 赋值语法与其它语言不同的一点是赋值的变量与值之间是不能有空格的 1name=“narcissus” #必须紧挨着 变量的调用变量前面加$,同时变量本身加{} 1echo $&#123;name&#125; #当然了，大部分时候这个括号是可以省略的，只要保证后面不紧挨着其它字符 系统预置变量12345678910$&#123;0&#125; 当前程序$&#123;1&#125; 程序的第一个参数$&#123;2&#125; 程序的第二个参数...$&#123;*&#125; 程序的所有参数$&#123;#&#125; 程序所有参数的统计$&#123;?&#125; 前一个命令是否执行成功，成功为0$&#123;PWD&#125; 当前目录$&#123;UID&#125; 用户id，root为0 if条件判断语句有开头有结尾，if...then..elif..then...else ...fi 1234567if ((10&gt;5));then #两个括号用在if中表示判断大小，后面接分号，then echo 10 is greater than 5elif ((10==5));then echo 10 equals 5else echo 5 is greater than 10fi #以反if结尾表示结束 逻辑运算符1234567891011-eq #等于，用于整形比较-ne #不等于，用于整形比较-lt #小于，用于整形比较-gt #大于，用于整形比较-le #小于或等于，用于整形比较-ge #大于或等于，用于整形比较-a #and-o #or-z #空字符串-f #文件是否存在-d #目录是否存在 例子：判断目录是否存在，不存在就创建12345678910#!/bin/bash#make directory if it&apos;s not exist#author narcissusif [ ! -d ./test2 ];then echo create direcotry test2 mkdir test2else echo directory existsfi 日期打印1echo `date +%Y%m%d` for 循环例子：列出普通用户家目录所有文件、目录 1234567891011121314151617181920#!/bin/bash#打印用户家目录下的所有文件名#author narcissus木cd ~ #进入家目录if [ $UID -eq 0 ];then #判断如果是root用户 for i in `ls /home/` #列出所有普通用户 do cd /home/$i #进入普通用户目录 for j in `ls` #循环用户下的文件/目录 do echo $j #打印 done doneelse #如果是普通用户 for j in `ls` #循环用户下的文件/目录 do echo $j #打印 done fi shell执行时候的检查12sh -n test.sh #检查是否有错误sh -x test.sh #打印执行具体过程（每步都显示，非常有用）]]></content>
+      <categories>
+        <category>linux</category>
+        <category>shell编程</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[wc计数]]></title>
     <url>%2F2019%2F04%2F27%2Fwc%E8%AE%A1%E6%95%B0%2F</url>
     <content type="text"><![CDATA[前面说的时候没注意到这个命令还挺复杂的 wc(word count)计数常用参数 -c, –bytes 字节数 -m, –chars 字符数 -l, –lines 总行数 -L, –max-line-length 最长的行的字符数 -w, –words 单词数 wc是支持管道的,可以接受标准输入.所以我们使用echo来看为什么输出是5?是它数错了吗?不是的,其实每行的结尾都有一个换行符,只是我们看不到而已.我们把它打印出来看看所以现在就很清楚了,每一行都有一个换行符.总的字节数=字节数-行数=(wc -c )-(wc -l) 如果是汉字呢?我们来数一下字数同样的道理,都需要考虑到换行符的问题]]></content>
