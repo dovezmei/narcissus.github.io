@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  
+
+
+
+
+  <meta name="description" content="一个潦草的名字,拨动了故事的弦   #####白盒测试（代码测试）：测试代码的覆盖率  #####黑盒测试（功能测试）  什么是黑盒测试？ 把被测对象看成一个黑盒，只考虑整体特性，不考虑其内部具体实现。 被测对象可以时一个系统，一个子系统，一个模块，一个子模块，一个函数等。 黑盒测试又可以被称为基于规格的测试。   常见的黑盒测试类型 功能性测试： 是顺序测试每个程序特性或功能 一个模块一个模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试-测试方法">
+<meta property="og:url" content="http://dovezmei.club/2019/05/02/测试-测试方法/index.html">
+<meta property="og:site_name" content="NARCISSUS木">
+<meta property="og:description" content="一个潦草的名字,拨动了故事的弦   #####白盒测试（代码测试）：测试代码的覆盖率  #####黑盒测试（功能测试）  什么是黑盒测试？ 把被测对象看成一个黑盒，只考虑整体特性，不考虑其内部具体实现。 被测对象可以时一个系统，一个子系统，一个模块，一个子模块，一个函数等。 黑盒测试又可以被称为基于规格的测试。   常见的黑盒测试类型 功能性测试： 是顺序测试每个程序特性或功能 一个模块一个模块">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9937522-efa594f60a37e4a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-01T17:49:45.517Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测试-测试方法">
+<meta name="twitter:description" content="一个潦草的名字,拨动了故事的弦   #####白盒测试（代码测试）：测试代码的覆盖率  #####黑盒测试（功能测试）  什么是黑盒测试？ 把被测对象看成一个黑盒，只考虑整体特性，不考虑其内部具体实现。 被测对象可以时一个系统，一个子系统，一个模块，一个子模块，一个函数等。 黑盒测试又可以被称为基于规格的测试。   常见的黑盒测试类型 功能性测试： 是顺序测试每个程序特性或功能 一个模块一个模块">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9937522-efa594f60a37e4a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://dovezmei.club/2019/05/02/测试-测试方法/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>测试-测试方法 | NARCISSUS木</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NARCISSUS木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">narcissus blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-网站集锦">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/website/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>网站集锦</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dovezmei.club/2019/05/02/测试-测试方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="NARCISSUS木">
+      <meta itemprop="description" content="for u in my love">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/05/01/EYwDsK.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NARCISSUS木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">测试-测试方法
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-02 01:49:36 / 修改时间：01:49:45" itemprop="dateCreated datePublished" datetime="2019-05-02T01:49:36+08:00">2019-05-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/测试/" itemprop="url" rel="index"><span itemprop="name">测试</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+		  
+		    <span class="post-meta-divider">|</span>
+			<span id="busuanzi_value_page_pv"></span>次阅读
+		  
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="http://music.163.com/song?id=425684758&amp;userid=1388867694" target="_blank" rel="noopener">一个潦草的名字,拨动了故事的弦</a></p>
+</blockquote>
+<ol>
+<li><p>#####白盒测试（代码测试）：测试代码的覆盖率</p>
+</li>
+<li><p>#####黑盒测试（功能测试）</p>
+<ul>
+<li><strong>什么是黑盒测试？</strong><ul>
+<li>把被测对象看成一个黑盒，只考虑<code>整体特性</code>，不考虑其内部具体实现。</li>
+<li>被测对象可以时一个系统，一个子系统，一个模块，一个子模块，一个函数等。</li>
+<li>黑盒测试又可以被称为基于规格的测试。</li>
+</ul>
+</li>
+<li><strong>常见的黑盒测试类型</strong><ol>
+<li><em>功能性测试：</em><ul>
+<li>是顺序测试每个程序特性或功能</li>
+<li>一个模块一个模块的测试，即每个功能在其最先调用的地方被测试</li>
+</ul>
+</li>
+<li><em>容量测试：</em>检测软件在处理海量数据时的局限性，能发现系统效率方面的问题。</li>
+<li><em>负载测试：</em>检测系统在一个很短时间内处理一个巨大的数据量或执行许多功能调用上的能力</li>
+<li><em>恢复性测试：</em>主要保证系统在崩溃后能够恢复外部数据的能力</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>黑盒测试来源于质量模型</strong></p>
+</li>
+<li><p><strong>功能性测试所测试的软件质量特性</strong></p>
+<ul>
+<li><em>外部和内部质量</em><ul>
+<li>功能性：适合/准确/互操作/保密安全性</li>
+<li>可靠性：成熟/容错/易恢复性</li>
+<li>易用性：易理解/易学/易操作/吸引性</li>
+<li>效率： 时间特性/资源利用性</li>
+<li>维护性：易分析/易改变/稳定/易测试性</li>
+<li>可移植性：适应/易安装/共存/易替换性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>常用黑盒测试方法：</strong></p>
+<ul>
+<li>等价类划分法 </li>
+<li>边界值分析法 </li>
+<li>因果图分析法 </li>
+<li>判定表法 </li>
+<li>状态迁移法</li>
+</ul>
+</li>
+<li><p><strong>黑盒测试特点：</strong></p>
+<ul>
+<li><em>优点：</em><ul>
+<li>对于更大的代码单元来说（子系统/系统级），比白盒测试<code>效率高</code></li>
+<li>测试人员不需要了解现实的细节，包括特定的编程语言</li>
+<li>从用户的视角进行测试，很容易被大家理解和接受</li>
+<li>有助于暴露任何规格不一致或有歧义的问题</li>
+</ul>
+</li>
+<li><em>缺点：</em><ul>
+<li>没有清晰的和简明的规格，测试用例时很难设计的</li>
+<li>不能控制内部执行路径，会有很多内部程序路径没有被测试到</li>
+<li>不能直接针对特定的程序段，这些程序可能非常复杂</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>灰盒测试（黑盒测试和白盒测试结合）</strong></p>
+<ul>
+<li>典型的灰盒测试比如集成测试和系统测试时借助log信息</li>
+</ul>
+</li>
+<li><p><strong>以下属于什么测试</strong></p>
+<ul>
+<li>LLD：详细设计文档 —&gt;    单元测试-白盒</li>
+<li>SRS：需求分析文档 —&gt;    系统测试-黑盒</li>
+<li>HLD：概要设计文档 —&gt;    集成测试-灰盒</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ul>
+<li><em>LLD（详细设计文档 ）</em><ul>
+<li>单元测试UT   </li>
+<li>白盒测试范畴  主要测试单元内部的数据结构 逻辑控制 异常处理等</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><em>HLD（概要设计文档）</em><ul>
+<li>集成测试IT  </li>
+<li>灰盒测试范畴   主要测试模块之间的接口和接口数据传递关系，以及模块组合后的整体功能</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><em>SRS（需求设计文档）</em><ul>
+<li>系统测试ST   </li>
+<li>黑盒测试范畴</li>
+<li>主要测试整个系统相对于需求的符合度</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ol start="9">
+<li><p><strong>产品软件：</strong>把行业的共同点抽出来做一套软件。</p>
+<ul>
+<li>软件研发可以看成一个生成过程，在这个过程中会有产品输出，或者叫做工件输出</li>
+<li>输出的产品分为两类：<ul>
+<li>最终产品：编译后的软件，用户手册</li>
+<li>中间产品：SRS，HLD，LLD，代码等</li>
+</ul>
+</li>
+<li>无论是最终产品还是中间产品，都可以分为代码和文档</li>
+<li>文档进一步细分：<ul>
+<li>开发文档：SRS，HLD,LLD</li>
+<li>测试文档：测试计划，测试方案，测试用例</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>静态测试/动态测试</strong></p>
+<ul>
+<li><em>静态测试：</em>不运行被测试软件，而是采用其它手段和技术对被测试软件进行检测的一种测试技术，常用技术有<code>静态分析技术</code></li>
+<li><em>动态测试：</em>按照预先设计的数据和步骤去运行被测软件系统，从而对被测软件系统进行检测的一种测试技术。常用技术有<code>动态分析技术</code></li>
+</ul>
+</li>
+<li><p><strong>静态分析技术</strong></p>
+<ul>
+<li><em>定义：</em>静态分析是一种不通过执行程序二分析程序执行的技术</li>
+<li><em>功能：</em>检查软件的表示和描述是否一致，没有冲突或者没有歧义，它瞄准的是纠正软件系统在描述，表示和规格上的错误，因此是任何进一步测试执行的前提。</li>
+<li><em>主要有三种不同的程序测试可能性</em><ul>
+<li>考虑程序是否满足编码规则，语法上是否具有一致性和完整性</li>
+<li>考虑文档描述是否符合规范，准确，便于查阅</li>
+<li>考虑程序和文档之间的一致性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>动态分析技术</strong><ul>
+<li><em>定义：</em>对软件系统运行行为进行分析，包含程序在受控的环境下使用特定的输入进行正式的运行，和期望的结果比较以检查系统运行是正确还是不正确。</li>
+<li><em>常用的动态分析技术</em><ul>
+<li>路径测试</li>
+<li>分支测试</li>
+<li>性能测试</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>人工测试和自动化测试</strong></p>
+<ul>
+<li><em>人工测试：</em>测试活动由人来完成，狭义上是指测试执行由人工完成，是最基本的测试形式</li>
+<li><em>自动化测试：</em>一般是指通过计算机模拟人的测试行为，替代人的测试活动，狭义上是指测试执行由计算机来完成</li>
+<li><em>自动化测试的意义：</em><ul>
+<li>对程序新版本运行前一版本执行的测试，提高回归测试效率</li>
+<li>可以运行更多更频繁的测试，比如冒烟测试</li>
+<li>更好的利用资源</li>
+<li>可以执行手工测试困难或不可能做的测试</li>
+<li>测试具有一致性和可重复性，即自动化测试的步骤和结果是完全一样的</li>
+<li>测试的复用性，即自动化测试脚本可以拆分开给其它测试脚本使用</li>
+<li>可以更快的将软件推向市场，软件发布前进行高效的回归测试，减少软件发布的时间</li>
+<li>增加软件的信任度，通过自动化测试提高了测试效率。</li>
+</ul>
+</li>
+<li><em>自动化测试的限制</em><ul>
+<li>不能取代手工测试，自动化测试只能提高测试效率，不能提高测试有效性，即不可能发现更多缺陷</li>
+<li>手工测试比自动测试发现的缺陷更多</li>
+<li>对测试设计依赖性极大，测试设计的不好会遗漏问题</li>
+<li>自动化测试对软件开发具有很大的依赖性，开发上出现变更可能导致前面的自动化测试完全失效</li>
+<li>工具本身并不具备想象力，智能。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>性能测试</strong></p>
+<ul>
+<li><em>什么是软件性能：</em>软件的性能是软件的一种非功能特性，它关注的不是软件是否能够完成特定的功能，而是在完成该功能时展示出来的及时性。<ul>
+<li><code>理解：</code>由定义可知性能关注的是软件的非功能特性，所以一般来说性能测试介入的时机是在功能测试完成之后。另外，由定义中的及时性可知性能也是一种指标，可以用时间或其它指标来衡量，通常我们会使用某些工具或手段来检测软件的某些指标是否达到了要求，这就是性能测试。 </li>
+</ul>
+</li>
+<li><em>性能测试定义：</em>指通过自动化的测试工具模拟多种正常、峰值以及异常负载条件来对系统的各项性能指标进行测试</li>
+<li><em>性能测试类型</em><ul>
+<li>基准测试：在给系统施加较低压力时，查看系统的运行状况并记录相关数做为基础参考</li>
+<li>负载测试：是指对系统不断地增加压力或增加一定压力下的持续时间，直到系统的某项或多项性能指标达到安全临界值，例如某种资源已经达到饱和状态等 。</li>
+<li>压力测试：压力测试是评估系统处于或超过预期负载时系统的运行情况，关注点在于系统在峰值负载或超出最大载荷情况下的处理能力。</li>
+<li>稳定性测试：在给系统加载一定业务压力的情况下，使系统运行一段时间，以此检测系统是否稳定。</li>
+<li>并发测试：测试多个用户同时访问同一个应用、同一个模块或者数据记录时是否存在死锁或者其他性能问题，</li>
+</ul>
+</li>
+<li><em>性能测试包含那些方面：</em><ul>
+<li>响应时间</li>
+<li>吞吐量</li>
+<li>并发数</li>
+<li>资源利用率</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><img src="https://upload-images.jianshu.io/upload_images/9937522-efa594f60a37e4a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="测试方法"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/测试方法/" rel="next" title="测试方法">
+                <i class="fa fa-chevron-left"></i> 测试方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/02/测试-测试过程/" rel="prev" title="测试-测试过程">
+                测试-测试过程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://s2.ax1x.com/2019/05/01/EYwDsK.jpg" alt="NARCISSUS木">
+            
+              <p class="site-author-name" itemprop="name">NARCISSUS木</p>
+              <div class="site-description motion-element" itemprop="description">for u in my love</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/dovezmei" title="GitHub &rarr; https://github.com/dovezmei" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.jianshu.com/u/1b62333cbcc6" title="简书 &rarr; https://www.jianshu.com/u/1b62333cbcc6" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://space.bilibili.com/300701661" title="bilibili &rarr; https://space.bilibili.com/300701661" rel="noopener" target="_blank"><i class="fa fa-fw fa-bold"></i>bilibili</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://music.163.com/#/user/home?id=1388867694" title="网易云音乐 &rarr; https://music.163.com/#/user/home?id=1388867694" rel="noopener" target="_blank"><i class="fa fa-fw fa-music"></i>网易云音乐</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NARCISSUS木</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+<div>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style="display:none">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客
+</span>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
