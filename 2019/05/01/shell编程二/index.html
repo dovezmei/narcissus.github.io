@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="shell编程二expr求和命令放在之间 例子：计算1到100的和 123456789#!/bin/zshj=0for ((i=1;i&amp;lt;100;i++))do	j=`expr $j + $i`	#j=$(($i+$j))doneecho $j 字符串的截取 %号截取，删除右边字符，保留左边字符  %t*表示从右边开始，删除第一个 t及右边的字符  12i=&amp;quot;it seems tha">
+  <meta name="description" content="shell编程二expr求和命令放在之间 例子：计算1到100的和 123456789#!/bin/zshj=0for ((i=1;i&amp;lt;100;i++))do	j=`expr $j + $i`	#j=$(($i+$j))doneecho $j 字符串的截取 %号截取，删除右边字符，保留左边字符  %t*表示从右边开始，删除第一个 t及右边的字符  12i=&quot;it seems that i f">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell编程二">
 <meta property="og:url" content="http://dovezmei.club/2019/05/01/shell编程二/index.html">
 <meta property="og:site_name" content="NARCISSUS木">
-<meta property="og:description" content="shell编程二expr求和命令放在之间 例子：计算1到100的和 123456789#!/bin/zshj=0for ((i=1;i&amp;lt;100;i++))do	j=`expr $j + $i`	#j=$(($i+$j))doneecho $j 字符串的截取 %号截取，删除右边字符，保留左边字符  %t*表示从右边开始，删除第一个 t及右边的字符  12i=&amp;quot;it seems tha">
+<meta property="og:description" content="shell编程二expr求和命令放在之间 例子：计算1到100的和 123456789#!/bin/zshj=0for ((i=1;i&amp;lt;100;i++))do	j=`expr $j + $i`	#j=$(($i+$j))doneecho $j 字符串的截取 %号截取，删除右边字符，保留左边字符  %t*表示从右边开始，删除第一个 t及右边的字符  12i=&quot;it seems that i f">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-04-30T18:41:52.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell编程二">
-<meta name="twitter:description" content="shell编程二expr求和命令放在之间 例子：计算1到100的和 123456789#!/bin/zshj=0for ((i=1;i&amp;lt;100;i++))do	j=`expr $j + $i`	#j=$(($i+$j))doneecho $j 字符串的截取 %号截取，删除右边字符，保留左边字符  %t*表示从右边开始，删除第一个 t及右边的字符  12i=&amp;quot;it seems tha">
+<meta name="twitter:description" content="shell编程二expr求和命令放在之间 例子：计算1到100的和 123456789#!/bin/zshj=0for ((i=1;i&amp;lt;100;i++))do	j=`expr $j + $i`	#j=$(($i+$j))doneecho $j 字符串的截取 %号截取，删除右边字符，保留左边字符  %t*表示从右边开始，删除第一个 t及右边的字符  12i=&quot;it seems that i f">
 
 
 
@@ -517,54 +517,54 @@
       
         <h4 id="shell编程二"><a href="#shell编程二" class="headerlink" title="shell编程二"></a>shell编程二</h4><h4 id="expr求和"><a href="#expr求和" class="headerlink" title="expr求和"></a>expr求和</h4><p><strong>命令放在</strong><code></code><strong>之间</strong></p>
 <p>例子：计算1到100的和</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#!/bin/zsh</span></span><br><span class="line"></span><br><span class="line">j=0</span><br><span class="line">for ((i=1;i&lt;100;i++))</span><br><span class="line">do</span><br><span class="line">	j=`expr $j + $i`</span><br><span class="line">	#j=$(($i+$j))</span><br><span class="line">done</span><br><span class="line">echo $j</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#!/bin/zsh</span></span><br><span class="line"></span><br><span class="line">j=0</span><br><span class="line">for ((i=1;i<span class="xml"><span class="tag">&lt;<span class="name">100;i++))</span></span></span></span><br><span class="line"><span class="xml">do</span></span><br><span class="line"><span class="xml">	j=`expr $j + $i`</span></span><br><span class="line"><span class="xml">	#j=$(($i+$j))</span></span><br><span class="line"><span class="xml">done</span></span><br><span class="line"><span class="xml">echo $j</span></span><br></pre></td></tr></table></figure>
 <h5 id="字符串的截取"><a href="#字符串的截取" class="headerlink" title="字符串的截取"></a>字符串的截取</h5><ul>
 <li><p>%号截取，删除右边字符，保留左边字符</p>
 <ul>
 <li><p><code>%t*</code>表示从右边开始，删除第一个 t及右边的字符 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i%t*&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">i</span>=<span class="string">"it seems that i fall in love with you"</span></span><br><span class="line">echo $&#123;<span class="built_in">i</span><span class="comment">%t*&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it seems that i fall in love wi</span><br></pre></td></tr></table></figure>
+<pre><code><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">it</span> seems <span class="keyword">that</span> i fall <span class="keyword">in</span> love wi</span><br></pre></td></tr></table></figure>
 </code></pre><ul>
 <li><p><code>%%m*</code> 表示从右边开始，删除最后（最左边）一个t及右边的字符 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i%%t*&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">i</span>=<span class="string">"it seems that i fall in love with you"</span></span><br><span class="line">echo $&#123;<span class="built_in">i</span><span class="comment">%%t*&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i</span><br></pre></td></tr></table></figure>
+<pre><code><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">i</span></span><br></pre></td></tr></table></figure>
 </code></pre><ul>
 <li><p>#号截取，删除左边字符，保留右边字符。</p>
 <ul>
 <li><p><code>#*t</code>表示从左边开始，删除第一个 t及左边的字符 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i#*t&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seems that i fall in love with you</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="string">"it seems that i fall in love with you"</span></span><br><span class="line">echo $&#123;i<span class="comment">#*t&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seems <span class="keyword">that</span> i fall <span class="keyword">in</span> love <span class="keyword">with</span> you</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>##*t</code>表示从左边开始删除最后（最右边）一个t及左边的所有字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i##*t&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h you</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="string">"it seems that i fall in love with you"</span></span><br><span class="line">echo $&#123;i<span class="comment">##*t&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">h you</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 <li><p>从左边第几个字符开始，总字符的个数</p>
 <p>从第一个字符开始，总个数为4</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i:0:4&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it s</span><br></pre></td></tr></table></figure>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">i="it</span> seems that i fall <span class="keyword">in</span> love <span class="keyword">with</span> you<span class="string">"</span></span><br><span class="line"><span class="string">echo <span class="subst">$&#123;i:<span class="number">0</span>:<span class="number">4</span>&#125;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">it</span> s</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>从左边第几个字符开始，直到结束</p>
 <p>从第4个开始，到结束</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i:4&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">i="it</span> seems that i fall <span class="keyword">in</span> love <span class="keyword">with</span> you<span class="string">"</span></span><br><span class="line"><span class="string">echo <span class="subst">$&#123;i:<span class="number">4</span>&#125;</span></span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>从右边第几个开始，总字符个数</p>
 <p>从右边第三个开始算起，向右2个字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i:0-3：2&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo</span><br></pre></td></tr></table></figure>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">i="it</span> seems that i fall <span class="keyword">in</span> love <span class="keyword">with</span> you<span class="string">"</span></span><br><span class="line"><span class="string">echo <span class="subst">$&#123;i:<span class="number">0</span>-<span class="number">3</span>：<span class="number">2</span>&#125;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yo</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>从右边第几个字符开始，直到结束</p>
 <p>从右边第三个开始，向右直到结束</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=&quot;it seems that i fall in love with you&quot;</span><br><span class="line">echo $&#123;i:0-3&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">you</span><br></pre></td></tr></table></figure>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">i="it</span> seems that i fall <span class="keyword">in</span> love <span class="keyword">with</span> you<span class="string">"</span></span><br><span class="line"><span class="string">echo <span class="subst">$&#123;i:<span class="number">0</span>-<span class="number">3</span>&#125;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">you</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>例子：我需要将简书上的文章发布到网站上，我已经下载好了，可是因为有点多，需要每次都手动去一个一个的发布，太麻烦了，所以就想有什么简单的方法可以解决。</p>
@@ -688,7 +688,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

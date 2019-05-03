@@ -512,7 +512,7 @@
         <ul>
 <li><strong>vlookup语法</strong><blockquote>
 <p>vlookup函数用来在一张表格中(或者跨表格)<strong>水平</strong>查找需要的数据<br><img src="https://upload-images.jianshu.io/upload_images/9937522-d465521a7939ec39.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>vlookup(查找值，查找区域，查找列，精确匹配0/模糊匹配1)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.凡是涉及到公式需要拖动（复制）时，都需要考虑查找区域的相对引用与绝对引用。</span><br><span class="line">2.跨表格引用时在选区时先点击另一张表的名称，然后选区，选区结束后必须先打逗号来结束选区的操作。</span><br><span class="line">3.模糊匹配数值时只会匹配小于等于自己的值。</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>凡是涉及到公式需要拖动（复制）时，都需要考虑查找区域的相对引用与绝对引用。</span><br><span class="line"><span class="number">2.</span>跨表格引用时在选区时先点击另一张表的名称，然后选区，选区结束后必须先打逗号来结束选区的操作。</span><br><span class="line"><span class="number">3.</span>模糊匹配数值时只会匹配小于等于自己的值。</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
@@ -528,7 +528,7 @@
 <ul>
 <li><strong>使用isna函数处理数字格式引起的错误</strong></li>
 </ul>
-<p>如果查找的两边既有数字又有文本，那么我们需要用到两次查找，第一次按照数字格式查找一遍，然后用文本格式查找一遍。需要用到 <strong>if函数</strong> 和 <strong>isna函数</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(isna(数字查找),文本查找，数字查找)</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>如果查找的两边既有数字又有文本，那么我们需要用到两次查找，第一次按照数字格式查找一遍，然后用文本格式查找一遍。需要用到 <strong>if函数</strong> 和 <strong>isna函数</strong><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">if</span><span class="params">(isna(数字查找)</span></span>,文本查找，数字查找)</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
 <hr>
 <ul>
 <li><strong>hlookup函数用于竖着一列进行查找，和vlookup用法相同。</strong></li>
@@ -646,7 +646,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

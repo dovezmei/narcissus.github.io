@@ -1768,7 +1768,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ec54ff;
+  background: #875ea7;
 }
 .feed-link,
 .chat {
@@ -2710,7 +2710,6 @@ hr {
   }
 }
 #sidebar {
-  background-image: url("/images/background.jpg");
   background-color: #f2f2f2;
   background-size: cover;
   background-position: center;

@@ -560,7 +560,7 @@ npm install --save hexo-deployer-git    #解决后面发布时找不到git的问
 <pre><code>npm install -g hexo-cli
 </code></pre><h5 id="新建存放hexo的文件夹"><a href="#新建存放hexo的文件夹" class="headerlink" title="新建存放hexo的文件夹"></a>新建存放hexo的文件夹</h5><ul>
 <li><p>archlinux</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir hexodir</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> hexodir</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>windows</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">随便找个地方新建一个文件夹就好了</span><br></pre></td></tr></table></figure>
@@ -571,28 +571,28 @@ npm install --save hexo-deployer-git    #解决后面发布时找不到git的问
 <ul>
 <li>linux</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd hexodir</span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexodir</span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>windows</p>
 <p>进入hexo文件夹下面，打开cmd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">init</span></span><br><span class="line">npm <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h5 id="使用hexo生成静态html文件"><a href="#使用hexo生成静态html文件" class="headerlink" title="使用hexo生成静态html文件"></a>使用hexo生成静态html文件</h5><pre><code>进入到hexo文件下，windows打开cmd，linux打开终端
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure>
 <pre><code>或者简写为
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-<h5 id="本地启动服务"><a href="#本地启动服务" class="headerlink" title="本地启动服务"></a>本地启动服务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br></pre></td></tr></table></figure>
+<h5 id="本地启动服务"><a href="#本地启动服务" class="headerlink" title="本地启动服务"></a>本地启动服务</h5><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
 <pre><code>或者简写为
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<h5 id="使用浏览器访问"><a href="#使用浏览器访问" class="headerlink" title="使用浏览器访问"></a>使用浏览器访问</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:4000/</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo s</span></span><br></pre></td></tr></table></figure>
+<h5 id="使用浏览器访问"><a href="#使用浏览器访问" class="headerlink" title="使用浏览器访问"></a>使用浏览器访问</h5><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span><span class="comment">//localhost:4000/</span></span><br></pre></td></tr></table></figure>
 <pre><code>如果能打开网页，说明本地已经配置好了
 </code></pre><hr>
 <h5 id="在github上面创建仓库"><a href="#在github上面创建仓库" class="headerlink" title="在github上面创建仓库"></a>在github上面创建仓库</h5><ul>
 <li><p>如果没有github，先去<a href="[https://github.com/join?source=header-home](https://github.com/join?source=header-home">注册</a>一个</p>
 </li>
 <li><p>git与github连接需要使用ssh，所以需要生成ssh 密匙。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh-keygen</span></span><br></pre></td></tr></table></figure>
 <p>linux在~/.ssh下生成id_rsa.pub文件，复制文件内容</p>
 <p><img src="https://s2.ax1x.com/2019/05/01/EYNF7d.png" alt="EYNF7d.png"></p>
 <p><a href="https://imgchr.com/i/EYNm1f" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/01/EYNm1f.png" alt="EYNm1f.png"></a></p>
@@ -609,23 +609,23 @@ npm install --save hexo-deployer-git    #解决后面发布时找不到git的问
 </ul>
 <h5 id="配置hexo，与github关联起来"><a href="#配置hexo，与github关联起来" class="headerlink" title="配置hexo，与github关联起来"></a>配置hexo，与github关联起来</h5><pre><code>注意：在写配置的时候，冒号后面需要有一个空格，不然会报错
 编辑hexodir文件夹下面的_config.yml文件，最后面添加
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deloy:</span><br><span class="line">        type: git</span><br><span class="line">    rpeo: git@github.com:用户名/仓库名.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
-<h5 id="将本地文件推送到github上面"><a href="#将本地文件推送到github上面" class="headerlink" title="将本地文件推送到github上面"></a>将本地文件推送到github上面</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deloy</span>:</span><br><span class="line">        <span class="attribute">type</span>: git</span><br><span class="line">    <span class="attribute">rpeo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:用户名/仓库名.git</span><br><span class="line">    <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
+<h5 id="将本地文件推送到github上面"><a href="#将本地文件推送到github上面" class="headerlink" title="将本地文件推送到github上面"></a>将本地文件推送到github上面</h5><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <pre><code>或者简写为
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    hexo g</span><br><span class="line">    hexo d</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    <span class="attribute">h</span><span class="attribute">e</span><span class="attribute">x</span><span class="attribute">o</span> <span class="attribute">g</span></span><br><span class="line">    <span class="attribute">h</span><span class="attribute">e</span><span class="attribute">x</span><span class="attribute">o</span> <span class="attribute">d</span></span><br></pre></td></tr></table></figure>
 <p>然后打开网址就能看到自己的网站了</p>
 <h5 id="配置自己喜欢的主题"><a href="#配置自己喜欢的主题" class="headerlink" title="配置自己喜欢的主题"></a>配置自己喜欢的主题</h5><ul>
 <li>在官网选择自己喜欢的<a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题</a></li>
 <li><p>将主题下载到hexodir下的themes目录下，比如我下载的next主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexodir</span><br><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> hexodir</span><br><span class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/iissnan/hexo-theme-<span class="keyword">next</span> themes/<span class="keyword">next</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改hexodir目录下的_config.yml配置文件,修改theme</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">      theme: next</span><br></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">      theme: <span class="keyword">next</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>然后重新生成静态网页，并将网页推送到github上</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">    hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">    hexo g <span class="meta">&amp;&amp; hexo d</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -745,7 +745,7 @@ npm install --save hexo-deployer-git    #解决后面发布时找不到git的问
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

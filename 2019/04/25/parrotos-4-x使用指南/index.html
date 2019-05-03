@@ -533,7 +533,7 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/9937522-9d65b3fa07b9ca70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <ul>
 <li><p>然后安装grub到efi分区</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br><span class="line">grub-install --target=x86_64-efi --efi-directroy=/dev/sdb1 --bootloader-id=grub</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br><span class="line">grub-install <span class="attribute">--target</span>=x86_64-efi <span class="attribute">--efi-directroy</span>=/dev/sdb1 <span class="attribute">--bootloader-id</span>=grub</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装后efi分区包含一个grub和一个parrot目录，并分别有一个grubx64.efi文件<br><img src="https://upload-images.jianshu.io/upload_images/9937522-ec1fe1d75e290268.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="https://upload-images.jianshu.io/upload_images/9937522-34135e4675bb13ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 </li>
@@ -657,7 +657,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
