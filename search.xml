@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux上打开windows的txt文件乱码]]></title>
+    <url>%2F2019%2F05%2F04%2Flinux%E4%B8%8A%E6%89%93%E5%BC%80windows%E7%9A%84txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[linux上打开windows的txt文件乱码windows上默认是使用的gbk编码格式，然而linux设置的默认utf-8编码格式 之前有一个错误的想法:认为utf-8编码既然是国际通用的编码格式，支持各个国家的语言，那么就应该向下兼容gbk编码才对啊？其实不是这样的。如题，windows上的txt在linux上打开不就是乱码了吗 utf-8确实是支持所有的语言，但是它也是一种编码格式，只有你用了相同的编码格式，才能显示正常 乱码的本质是：读取二进制的时候采用的编码和最初将字符转换成二进制时的编码不一致 其实各种编码都是独立的，并不存在兼容问题，你使用什么编码格式生成的文字，那就必须要使用这种编码格式才能正常显示。有两种方法可以正常显示 可以将编辑器设置为支持这种编码格式 例如windows上gbk编码的txt，在utf-8编码的linux上要正常显示，可以将vim编辑器设置为支持gbk编码 1vim ~/.vimrc #修改vimrc配置文件 1set fileencodings=utf-8,gb18030,gbk #加入gbk支持 使用更加彻底的解决方法，将gbk格式转换为utf-8，这样所有的编辑器打开都能正常显示 例如将gbk编码的1.txt转换为utf-8的2.txt 1iconv -f gbk -t utf-8 1.txt -o 2.txt iconv语法：iconv - convert text from one character encoding to another 1234567inputfile 输入文件 如果不指定输入文件，那么读取标准输入outputfile 输入文件 如果不指定输出文件，那么写入标准输出-f 原编码格式 如果不指定原码格式，那么默认系统编码格式-t 转换后的编码格式 如果不指定输出编码格式，那么默认系统编码格式 1iconv [options] [-f from-encoding] [-t to-encoding] [inputfile] [-o] [outputfile] 12iconv -l #列出所有的编码格式iconv -c #忽略不能转化的字符]]></content>
+      <categories>
+        <category>linux</category>
+        <category>archlinux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[archlinux自动选择网速较快的源]]></title>
+    <url>%2F2019%2F05%2F04%2Farchlinux%E8%87%AA%E5%8A%A8%E9%80%89%E6%8B%A9%E7%BD%91%E9%80%9F%E8%BE%83%E5%BF%AB%E7%9A%84%E6%BA%90%2F</url>
+    <content type="text"><![CDATA[archlinux自动选择网速较快的源什么是reflectorReflector is a script which can retrieve the latest mirror list from the MirrorStatus page, filter the most up-to-date mirrors, sort them by speed and overwrite the file /etc/pacman.d/mirrorlist. 安装reflector脚本1sudo pacman -S reflector 命令运行首先备份之前的mirrorlist 1sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup 选择https/http协议、位于中国、12小时同步的镜像，通过下载速度排序，写入到 /etc/pacman.d/mirrorlist: 1sudo reflector --verbose --country China --age 12 --protocol https --protocol http --sort rate --save /etc/pacman.d/mirrorlist]]></content>
+      <categories>
+        <category>linux</category>
+        <category>archlinux</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[archlinux安装NVIDIA显卡驱动]]></title>
     <url>%2F2019%2F05%2F03%2Farchlinux%E5%AE%89%E8%A3%85NVIDIA%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%2F</url>
     <content type="text"><![CDATA[archlinux安装NVIDIA显卡驱动安装驱动 123sudo pacman -S mesa #确保安装了这个基础显卡驱动sudo pacman -S nvidia #安装N卡驱动sudo pacman -S bumblebee #提供守护进程以及程序的主要安装包 安装其他组件 1234sudo pacman -S nvidia-setting #配置工具sudo pacman -S xorg-server-devel #nvidia-xconfigsudo pacman -S opencl-nvidia #提供opencl支持sudo pacman -S bbswitch #开启或者关闭显卡驱动 将用户加入bumblebee组（必需的步骤） 1sudo gpasswd -a narcissus bumblebee 将bumblebee设为开机启动 1sudo systemctl enable bumblebeed 启动bumblebee,第一次安装之后启动没作用，重启之后才有用 1sudo systemctl start bumblebeed 修改bumblebee配置 1sudo vim /etc/bumblebee/bumblebee.conf 1234Driver=nvidia #如果不指定会自动选择[driver-nvidia]PMMethod=bbswitch #指定电源管理 重启之后检测测试软件检测是否运行正常 1optirun glxspheres64 命令行查看状态 1nvidia-smi 开启、关闭显卡关闭 1sudo tee /proc/acpi/bbswitch &lt;&lt;&lt; OFF 开启 1sudo tee /proc/acpi/bbswitch &lt;&lt;&lt; ON]]></content>
