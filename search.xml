@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[配置用户环境变量]]></title>
+    <url>%2F2019%2F05%2F08%2F%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%2F</url>
+    <content type="text"><![CDATA[linux中下载软件后，配置用户环境变量，让软件在终端任意路径下可执行解压软件创建连接到软件1cd ~/.local/bin #一般用户软件放入到这个目录 1ln -s 软件路径 软件名 配置环境变量1vim /etc/profile 添加 1export PATH="$PATH=~/.local/bin" 让环境变量生效1source /etc/profile 或者配置到本地shell配置文件中 如果使用的是bash： 1vim ~/.bashrc 如果使用的是zsh： 1vim ~/.zshrc 添加 1export PATH="$PATH=~/.local/bin" 让环境变量生效 1source ~/.bashrc 或者 1source ~/.zshrc 最后查看环境变量是否配置成功1echo $PATH]]></content>
+      <categories>
+        <category>linux</category>
+        <category>archlinux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[netstat]]></title>
+    <url>%2F2019%2F05%2F08%2Fnetstat%2F</url>
+    <content type="text"><![CDATA[netstatnetstat是一个过气的查看端口的命令，我们所使用的也大概就是查看端口才用到它了吧 其实它的作用不止这些： 1netstat -r #查看网关、路由 1netstat -i #查看网络接口名 然后就是用来查端口的命令 指定连接状态： 1-a #查看所有连接状态。默认为：connected 1-l #连接状态为listening，监听状态 指定连接协议： 1不指定时默认为所有协议 1-t #指定tcp协议 1-u #指定udp协议 指定网络协议版本： 1不指定时默认为ipv4和ipv6 1-6 #指定为ipv6 1-4 #指定为ipv4 其它的部分： 1-n #不解析域名 1-p #显示程序名 如果仅仅只是使用这个命令，那么它是没有多大作用的，因为会打印出很多的信息。 而我们需要的是查找需要的部分，所以还需要 grep 这个命令 指定程序名，查找端口 例子： 查看ssh端口： 1netstat -anp | grep ssh --color 由于ssh是使用tcp协议的，我们还可以加上 -t这个参数 1netstat -anpt | grep ssh --color 指定端口，查看是否被程序占用，被那个程序占用 查看22端口是否被占用,如果找得到，说明被占用 1netstat -an | grep :22 --color 查看22端口被那个程序占用 1netstat -anp | grep :22 --color 当然了，你也可以加上 -l 这个参数，指定是正在监听的状态]]></content>
+      <categories>
+        <category>linux</category>
+        <category>archlinux</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[linux上打开windows的txt文件乱码]]></title>
     <url>%2F2019%2F05%2F04%2Flinux%E4%B8%8A%E6%89%93%E5%BC%80windows%E7%9A%84txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%2F</url>
     <content type="text"><![CDATA[linux上打开windows的txt文件乱码windows上默认是使用的gbk编码格式，然而linux设置的默认utf-8编码格式 之前有一个错误的想法:认为utf-8编码既然是国际通用的编码格式，支持各个国家的语言，那么就应该向下兼容gbk编码才对啊？其实不是这样的。如题，windows上的txt在linux上打开不就是乱码了吗 utf-8确实是支持所有的语言，但是它也是一种编码格式，只有你用了相同的编码格式，才能显示正常 乱码的本质是：读取二进制的时候采用的编码和最初将字符转换成二进制时的编码不一致 其实各种编码都是独立的，并不存在兼容问题，你使用什么编码格式生成的文字，那就必须要使用这种编码格式才能正常显示。有两种方法可以正常显示 可以将编辑器设置为支持这种编码格式 例如windows上gbk编码的txt，在utf-8编码的linux上要正常显示，可以将vim编辑器设置为支持gbk编码 1vim ~/.vimrc #修改vimrc配置文件 1set fileencodings=utf-8,gb18030,gbk #加入gbk支持 使用更加彻底的解决方法，将gbk格式转换为utf-8，这样所有的编辑器打开都能正常显示 例如将gbk编码的1.txt转换为utf-8的2.txt 1iconv -f gbk -t utf-8 1.txt -o 2.txt iconv语法：iconv - convert text from one character encoding to another 1234567inputfile 输入文件 如果不指定输入文件，那么读取标准输入outputfile 输入文件 如果不指定输出文件，那么写入标准输出-f 原编码格式 如果不指定原码格式，那么默认系统编码格式-t 转换后的编码格式 如果不指定输出编码格式，那么默认系统编码格式 1iconv [options] [-f from-encoding] [-t to-encoding] [inputfile] [-o] [outputfile] 12iconv -l #列出所有的编码格式iconv -c #忽略不能转化的字符]]></content>
