@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vsftpd]]></title>
+    <url>%2F2019%2F05%2F09%2Fvsftpd%2F</url>
+    <content type="text"><![CDATA[为什么要安装vsftpd1234567同一局域网内，没有网络也可以传输文件不需要U盘速度超快安全稳定 概念：1ftp是一种文件传输协议，基于这种协议的有许多ftp软件。ftp软件分为服务器：vsftpd 端和客户端：ftp 123ftp使用的端口默认有20,21。所以要保证这两个端口没有被防火墙拦截，而且没有被其他软件占用20端口用来传输数据21端口用来服务器与客户端之间传输指令 简单安装使用我安装的是vsftpd 1yum install vsftpd -y 启动vsftpd服务 1service vsftpd start 查看服务器ip 1ip a 现在只要在局域网内，就可以通过浏览器访问了 1浏览器输入：ftp://ip 如果你访问不了，那么先临时将防火墙关闭 12service iptables stopservice firewalld stop 可以看到这里有个文件夹：pub，这个pub在服务器的那个位置？ 查看这个pub在位置 1find / -name pub 1可以看到位置在：/var/pub 以后我们就可以将需要共享的文件放入这里，其他电脑就可以下载了 禁止匿名用户访问，指定用户访问以上是简单的配置，接下来就进行个性化配置 这样设置之后我们发现其它人只要在局域网内都可以访问，是不安全的，所以我们想指定用户去访问（输入用户名和密码） 大部分配置文件都在 /etc/vsftpd/vsftpd.conf 这个文件中 1anonymous_enable=NO #禁止匿名用户访问 1anon_upload_enable=NO #禁止匿名用户上传 1anon_mkdir_write_enable=NO #取消匿名写入权限 1local_enable=YES #允许本地用户登录，也就是说只要是服务器端的用户都可以访问（包含root和/home下的user） 1write_enable=YES #给用户写入权限 这样设置之后可能使用用户和密码仍然访问不了，所以就需要了解 /etc/vsftpd 下面其他的两个配置文件的作用了 1ftpusers #这里设置黑名单 加入这里的用户都无法访问 1234user_list #控制配置，这个既可以是黑名单，也可以是白名单当vsftpd.conf中 userlist_enable=YES 时，为黑名单，加入这里的用户无法访问当vsftpd.conf中 userlist_enable=NO 时，为白名单，加入这里的用户才能访问 所以我们需要在 vsftpd.conf 中将 userlist_enable设为 NO 1userlist_enable=NO 同时在 user_list 中加入可以访问的用户名 以及确保 ftpusers 中没需要访问的用户名 优化开启被动模式 vsftpd默认是主动模式，也就是说数据连接的请求是由服务器发起的，由于防火墙的原因，这个连接请求可能被防火墙过滤掉了。所以才有了被动模式，被动模式中连接请求是有客户端发起的，而服务器端配置了允许固定范围ip的请求，这样保证了连接的正常。 在 vsftpd.conf 中添加 123pasv_enable=YESpasv_min_port=30000pasv_max_port=30999 这样服务器端就算配置好了。但是还没有完，这个pasv模式还需要客户端发送一条命令 其实在这之前一直都没有涉及到真正的客户端，只是使用浏览器访问了一个地址而已，真正使用客户端，是使用命令 ftp 服务器ip 1ftp ip #然后输入用户名，密码来访问 1passive #开启被动模式 ftp客户端使用vsftpd安装时默认就已经创建了一个匿名用户 ftp ，所以我们可以只输入用户名，不输入密码登录ftp 12ftp ip #登录ftp #输入用户名 当然了，在我们禁止匿名用户之后就需要使用设置的用户去登录了 1ftp 用户名:密码@ip 1help #查看所有命令 1put #上传 1get #下载 1mkdir #创建文件夹 1pwd #查看当前目录 1ls #列出目录下的文件 在命令前面加上 l 表示在本机操作（local） 1lcd #本机目录中移动 1lpwd #本机当前目录 错误解决如果用户登录后创建文件夹出现：550 Create directory operation failed错误 1vim /etc/selinux/config 1SELINUX=disabled]]></content>
+      <categories>
+        <category>linux</category>
+        <category>centos</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[配置用户环境变量]]></title>
     <url>%2F2019%2F05%2F08%2F%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%2F</url>
     <content type="text"><![CDATA[linux中下载软件后，配置用户环境变量，让软件在终端任意路径下可执行解压软件创建连接到软件1cd ~/.local/bin #一般用户软件放入到这个目录 1ln -s 软件路径 软件名 配置环境变量1vim /etc/profile 添加 1export PATH="$PATH=~/.local/bin" 让环境变量生效1source /etc/profile 或者配置到本地shell配置文件中 如果使用的是bash： 1vim ~/.bashrc 如果使用的是zsh： 1vim ~/.zshrc 添加 1export PATH="$PATH=~/.local/bin" 让环境变量生效 1source ~/.bashrc 或者 1source ~/.zshrc 最后查看环境变量是否配置成功1echo $PATH]]></content>
